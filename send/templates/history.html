@@ -1,0 +1,26 @@
+{% extends 'template.html' %}
+{% block title %}History{% endblock %}
+
+{% block content %}
+<div class="container">
+    {% for x in history %}
+    <h3>Cart {{x[0][1]}}</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in x %}
+            <tr>
+                <td >{{i[2]}}</td>
+                <td>{{i[3]}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endfor %}
+</div>
+{% endblock %}
