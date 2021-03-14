@@ -1,0 +1,19 @@
+{% extends 'template.html' %}
+{% block title %}Add product{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="card">
+        <div class="card-header">Add product</div>
+        <div class="card-body">
+            <form method="POST" id="bid">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" name="name">
+                <label for="quantity" class="form-label">Quantity</label>
+                <input type="number" class="form-control" step="10" name="quantity">
+                <button type="submit" class="form-control btn btn-primary">Add</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends 'template.html' %}
+{% block title %}Cart{% endblock %}
+
+{% block content %}
+<div class="container">
+    <form method="POST">
+        <div class="input-group my-3">
+            <input type="text" class="form-control" name="search">
+            <select class="form-select col-lg-2" name="parameter">
+                <option value="id">ID</option>
+                <option value="name">Name</option>
+            </select>
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </div>
+    </form>
+    <div class="card">
+        <div class="card-header">Search results</div>
+        <div class="card-body">
+            <ul class="list-group">
+                {% if results %}
+                {% for y in results %}
+                <li class="list-group-item"><a href="product/{{y[0]}}">{{y[1]}}</a></li>
+                {% endfor %}
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    <br>
+    <h3>Cart:</h3>
+    {% if cart %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Quantity</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for x in cart %}
+            <tr>
+                <th>{{x[1]}}</th>
+                <td>{{x[2]}}</td>
+                <td><a href="/removecart/{{x[0]}}" class="btn btn-danger">Remove</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/sendcart" class="btn btn-success">Send</a>
+    {% else %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Quantity</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Cart empty</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+{% endblock %}
